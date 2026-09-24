@@ -13,7 +13,7 @@ export type Course = Record<string, string> & {
 export type CoursesResponse = { count: number; courses: Course[] }
 export type ChatResponse = { reply: string; tools_used: string[] }
 
-const API_BASE = 'http://127.0.0.1:8000/api'
+const API_BASE = `${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/api`
 
 export async function getCourses(query = ''): Promise<CoursesResponse> {
   const url = new URL(`${API_BASE}/courses`)
